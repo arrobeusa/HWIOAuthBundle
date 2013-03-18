@@ -98,6 +98,15 @@ abstract class AbstractResourceOwner implements ResourceOwnerInterface
 
         return $this->options[$name];
     }
+    
+    public function setOption($name, $value)
+    {
+        if (!array_key_exists($name, $this->options)) {
+            throw new \InvalidArgumentException(sprintf('Unknown option "%s"', $name));
+        }
+
+        $this->options[$name] = $value;
+    }
 
     /**
      * {@inheritDoc}
